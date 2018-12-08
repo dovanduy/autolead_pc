@@ -17,8 +17,6 @@ namespace AutoLead
         public List<string> listTimeZone = new List<string>();
         public List<countrycode> listCountryCode = new List<countrycode>();
         public List<countrycodeiOS> listCountryCodeiOS = new List<countrycodeiOS>();
-        public List<languagecode> listLanguageCode = new List<languagecode>();
-        public List<deviceScreens> listscreens = new List<deviceScreens>();
         public List<string> listfirstname = new List<string>();
         public List<string> listlastname = new List<string>();
         public List<string> listemaildomain = new List<string>();
@@ -42,8 +40,6 @@ namespace AutoLead
             loadtimezone();
             loadcountrycode();
             loadcountrycodeiOS();
-            loadlangcode();
-            loadDeviceScreen();
             loadOtherData();
         }
 
@@ -72,27 +68,6 @@ namespace AutoLead
             {
                 "\r\n"
             }, StringSplitOptions.None).ToList<string>();
-        }
-
-        private void loadDeviceScreen()
-        {
-            string[] array = Resources.deviceScreen.Split(new string[]
-            {
-                "\r\n"
-            }, StringSplitOptions.None);
-            for (int i = 0; i < array.Length; i++)
-            {
-                string[] array2 = array[i].Split(new string[]
-                {
-                    " "
-                }, StringSplitOptions.None);
-                deviceScreens deviceScreens = new deviceScreens();
-                deviceScreens.model = array2[0];
-                deviceScreens.width = Convert.ToDouble(array2[1]);
-                deviceScreens.heigh = Convert.ToDouble(array2[2]);
-                deviceScreens.scale = Convert.ToDouble(array2[3]);
-                this.listscreens.Add(deviceScreens);
-            }
         }
 
         private void loadcarrier()
@@ -183,26 +158,6 @@ namespace AutoLead
                 catch (Exception)
                 {
                 }
-            }
-        }
-
-        private void loadlangcode()
-        {
-            string languagecode = Resources.languagecode;
-            string[] array = languagecode.Split(new string[]
-            {
-                "\r\n"
-            }, StringSplitOptions.None);
-            foreach (string text in array)
-            {
-                string[] array3 = text.Split(new string[]
-                {
-                    "|"
-                }, StringSplitOptions.None);
-                languagecode languagecode2 = new languagecode();
-                languagecode2.langcode = array3[1];
-                languagecode2.langname = array3[0];
-                this.listLanguageCode.Add(languagecode2);
             }
         }
     }

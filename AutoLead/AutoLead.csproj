@@ -96,16 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app.cs" />
+    <Compile Include="Model\countrycode.cs" />
+    <Compile Include="Model\countrycodeiOS.cs" />
+    <Compile Include="NamedEvent.cs" />
     <Compile Include="TabAppData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="appDetail.cs" />
-    <Compile Include="appInfo.cs" />
+    <Compile Include="Model\appDetail.cs" />
+    <Compile Include="Model\appInfo.cs" />
     <Compile Include="AutoClosingMessageBox.cs" />
-    <Compile Include="BlowFish.cs" />
     <Compile Include="DeviceCommunicator.cs" />
-    <Compile Include="EnumRunningSTT.cs" />
-    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IDeviceConnectDelegate.cs" />
     <Compile Include="InputDialog.cs">
       <SubType>Form</SubType>
@@ -115,20 +115,14 @@
     </Compile>
     <Compile Include="InterfaceVip72.cs" />
     <Compile Include="ScriptEntity.cs" />
-    <Compile Include="SSHConnector.cs" />
     <Compile Include="TabAutoLead.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackupObj.cs" />
-    <Compile Include="Carrier.cs" />
+    <Compile Include="Model\BackupObj.cs" />
+    <Compile Include="Model\Carrier.cs" />
     <Compile Include="command.cs" />
     <Compile Include="commandResult.cs" />
-    <Compile Include="ConfigData.cs" />
-    <Compile Include="countrycode.cs" />
-    <Compile Include="countrycodeiOS.cs" />
-    <Compile Include="DataConfig.cs" />
-    <Compile Include="deviceInfo.cs" />
-    <Compile Include="deviceScreens.cs" />
+    <Compile Include="Model\deviceInfo.cs" />
     <Compile Include="DownloadProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,25 +135,21 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="generateDeviceID.cs" />
-    <Compile Include="geo.cs" />
-    <Compile Include="iDevice.cs" />
-    <Compile Include="ipData.cs" />
-    <Compile Include="languagecode.cs" />
+    <Compile Include="Model\ipData.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
-    <Compile Include="ListViewItem1.cs" />
-    <Compile Include="LV_ITEM.cs" />
+    <Compile Include="Vip72Support\ListViewItem1.cs" />
+    <Compile Include="Vip72Support\LV_ITEM.cs" />
     <Compile Include="NetworkHelper.cs" />
-    <Compile Include="NMHDR.cs" />
-    <Compile Include="NMITEMACTIVATE.cs" />
-    <Compile Include="offerItem.cs" />
+    <Compile Include="Vip72Support\NMHDR.cs" />
+    <Compile Include="Vip72Support\NMITEMACTIVATE.cs" />
+    <Compile Include="Model\offerItem.cs" />
     <Compile Include="OfferOption.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OfferOption.Designer.cs">
       <DependentUpon>OfferOption.cs</DependentUpon>
     </Compile>
-    <Compile Include="POINT.cs" />
+    <Compile Include="Vip72Support\POINT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -188,8 +178,7 @@
     <Compile Include="RNCryptor\Pbkdf2Prf.cs" />
     <Compile Include="RNCryptor\Schema.cs" />
     <Compile Include="RunData.cs" />
-    <Compile Include="Script.cs" />
-    <Compile Include="ssh.cs" />
+    <Compile Include="Model\ssh.cs" />
     <Compile Include="SshChecker.cs" />
     <Compile Include="sshcommand.cs" />
     <Compile Include="TabExSetting.cs">
@@ -219,7 +208,6 @@
     <Compile Include="TabSupport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="textvar.cs" />
     <Compile Include="ThreadAutoLead.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,15 +239,14 @@
     <Compile Include="ThreadWipe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateHelpter.cs" />
     <Compile Include="Updater.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Vip72.cs" />
     <Compile Include="Vip72Chung.cs" />
-    <Compile Include="vipaccount.cs" />
-    <Compile Include="Win32AllocationTypes.cs" />
-    <Compile Include="Win32MemoryProtection.cs" />
-    <Compile Include="Win32ProcessAccessType.cs" />
+    <Compile Include="Model\vipaccount.cs" />
+    <Compile Include="Vip72Support\Win32AllocationTypes.cs" />
+    <Compile Include="Vip72Support\Win32MemoryProtection.cs" />
+    <Compile Include="Vip72Support\Win32ProcessAccessType.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DownloadProgress.resx">
@@ -315,5 +302,6 @@
   <ItemGroup>
     <None Include="Resources\DeleteRed.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,6 +28,7 @@ namespace AutoLead
             this.optionform.passControl = new OfferOption.PassControl(this.passlistview);
             this.optionform.UpdateCombo = new OfferOption.updateCombo(this.getApp);
             this.optionform.StartPosition = FormStartPosition.CenterScreen;
+            initAutoConfigThread();
         }
 
         private void getApp()

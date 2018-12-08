@@ -102,13 +102,16 @@
             this.wipecombo = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnFltRRS = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.cbRRSLoop = new System.Windows.Forms.CheckBox();
             this.cbRandomRRS = new System.Windows.Forms.CheckBox();
-            this.btnFltRRS = new System.Windows.Forms.Button();
             this.cbRRSThenLead = new System.Windows.Forms.CheckBox();
             this.cbRRSUsingSSHServer = new System.Windows.Forms.CheckBox();
             this.btnRemoveUnselectRRS = new System.Windows.Forms.Button();
-            this.btnAutoSelectRRS = new System.Windows.Forms.Button();
             this.labelSelectedRRS = new System.Windows.Forms.Label();
             this.labelTotalRRS = new System.Windows.Forms.Label();
             this.checkBoxRandomScript = new System.Windows.Forms.CheckBox();
@@ -251,25 +254,20 @@
             this.cbFakeIOS11 = new System.Windows.Forms.CheckBox();
             this.Script = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.button54 = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnExStartAll = new System.Windows.Forms.Button();
+            this.btnExStopAll = new System.Windows.Forms.Button();
             this.cbPhamViMayTinh = new System.Windows.Forms.CheckBox();
-            this.button53 = new System.Windows.Forms.Button();
-            this.button52 = new System.Windows.Forms.Button();
-            this.button51 = new System.Windows.Forms.Button();
-            this.button50 = new System.Windows.Forms.Button();
-            this.button49 = new System.Windows.Forms.Button();
-            this.button48 = new System.Windows.Forms.Button();
-            this.button47 = new System.Windows.Forms.Button();
-            this.btnImportOtherSetting = new System.Windows.Forms.Button();
-            this.button45 = new System.Windows.Forms.Button();
-            this.button44 = new System.Windows.Forms.Button();
-            this.button43 = new System.Windows.Forms.Button();
-            this.btnImportAllSetting = new System.Windows.Forms.Button();
-            this.btnExportOtherSetting = new System.Windows.Forms.Button();
-            this.button40 = new System.Windows.Forms.Button();
-            this.button39 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.btnExportAllSetting = new System.Windows.Forms.Button();
+            this.btnExResetAll = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbExOtherSetting = new System.Windows.Forms.CheckBox();
+            this.cbExVip72 = new System.Windows.Forms.CheckBox();
+            this.cbExSSH = new System.Windows.Forms.CheckBox();
+            this.cbExOffer = new System.Windows.Forms.CheckBox();
+            this.cbExCheckAll = new System.Windows.Forms.CheckBox();
+            this.btnExSetData = new System.Windows.Forms.Button();
+            this.btnExExportData = new System.Windows.Forms.Button();
+            this.btnExImportData = new System.Windows.Forms.Button();
             this.tabLog = new System.Windows.Forms.TabPage();
             this.cbLogExcept = new System.Windows.Forms.CheckBox();
             this.cbLogCmd = new System.Windows.Forms.CheckBox();
@@ -300,6 +298,8 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage7.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rsswaitnum)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProxy.SuspendLayout();
@@ -323,6 +323,8 @@
             this.groupBox9.SuspendLayout();
             this.Script.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.tabLog.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -1275,13 +1277,12 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.groupBox10);
             this.tabPage7.Controls.Add(this.cbRRSLoop);
             this.tabPage7.Controls.Add(this.cbRandomRRS);
-            this.tabPage7.Controls.Add(this.btnFltRRS);
             this.tabPage7.Controls.Add(this.cbRRSThenLead);
             this.tabPage7.Controls.Add(this.cbRRSUsingSSHServer);
             this.tabPage7.Controls.Add(this.btnRemoveUnselectRRS);
-            this.tabPage7.Controls.Add(this.btnAutoSelectRRS);
             this.tabPage7.Controls.Add(this.labelSelectedRRS);
             this.tabPage7.Controls.Add(this.labelTotalRRS);
             this.tabPage7.Controls.Add(this.checkBoxRandomScript);
@@ -1310,6 +1311,54 @@
             this.tabPage7.UseVisualStyleBackColor = true;
             this.tabPage7.Click += new System.EventHandler(this.tabPage7_Click);
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btnFltRRS);
+            this.groupBox10.Controls.Add(this.label22);
+            this.groupBox10.Controls.Add(this.label17);
+            this.groupBox10.Controls.Add(this.numericUpDown1);
+            this.groupBox10.Location = new System.Drawing.Point(448, 278);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(166, 101);
+            this.groupBox10.TabIndex = 48;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "RRS Filter";
+            // 
+            // btnFltRRS
+            // 
+            this.btnFltRRS.Location = new System.Drawing.Point(31, 27);
+            this.btnFltRRS.Name = "btnFltRRS";
+            this.btnFltRRS.Size = new System.Drawing.Size(106, 25);
+            this.btnFltRRS.TabIndex = 42;
+            this.btnFltRRS.Text = "Lọc RRS theo IP";
+            this.btnFltRRS.UseVisualStyleBackColor = true;
+            this.btnFltRRS.Click += new System.EventHandler(this.btnFltRRS_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(137, 70);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(15, 13);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "%";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(28, 70);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 13);
+            this.label17.TabIndex = 45;
+            this.label17.Text = "Tỉ lệ:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(73, 63);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown1.TabIndex = 46;
+            // 
             // cbRRSLoop
             // 
             this.cbRRSLoop.AutoSize = true;
@@ -1330,16 +1379,6 @@
             this.cbRandomRRS.Text = "Random RRS";
             this.cbRandomRRS.UseVisualStyleBackColor = true;
             this.cbRandomRRS.CheckStateChanged += new System.EventHandler(this.cbRandomRRS_CheckStateChanged);
-            // 
-            // btnFltRRS
-            // 
-            this.btnFltRRS.Location = new System.Drawing.Point(508, 309);
-            this.btnFltRRS.Name = "btnFltRRS";
-            this.btnFltRRS.Size = new System.Drawing.Size(106, 37);
-            this.btnFltRRS.TabIndex = 42;
-            this.btnFltRRS.Text = "Lọc RRS theo IP";
-            this.btnFltRRS.UseVisualStyleBackColor = true;
-            this.btnFltRRS.Click += new System.EventHandler(this.btnFltRRS_Click);
             // 
             // cbRRSThenLead
             // 
@@ -1373,15 +1412,6 @@
             this.btnRemoveUnselectRRS.Text = "Remove Unselect";
             this.btnRemoveUnselectRRS.UseVisualStyleBackColor = true;
             this.btnRemoveUnselectRRS.Click += new System.EventHandler(this.btnDeleteUncheckedRRS_Click);
-            // 
-            // btnAutoSelectRRS
-            // 
-            this.btnAutoSelectRRS.Location = new System.Drawing.Point(508, 353);
-            this.btnAutoSelectRRS.Name = "btnAutoSelectRRS";
-            this.btnAutoSelectRRS.Size = new System.Drawing.Size(106, 24);
-            this.btnAutoSelectRRS.TabIndex = 38;
-            this.btnAutoSelectRRS.Text = "Auto Select RRS";
-            this.btnAutoSelectRRS.UseVisualStyleBackColor = true;
             // 
             // labelSelectedRRS
             // 
@@ -1421,9 +1451,9 @@
             this.comboScriptRRS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboScriptRRS.Enabled = false;
             this.comboScriptRRS.FormattingEnabled = true;
-            this.comboScriptRRS.Location = new System.Drawing.Point(489, 252);
+            this.comboScriptRRS.Location = new System.Drawing.Point(436, 239);
             this.comboScriptRRS.Name = "comboScriptRRS";
-            this.comboScriptRRS.Size = new System.Drawing.Size(125, 21);
+            this.comboScriptRRS.Size = new System.Drawing.Size(178, 21);
             this.comboScriptRRS.TabIndex = 16;
             this.comboScriptRRS.Visible = false;
             this.comboScriptRRS.SelectedIndexChanged += new System.EventHandler(this.comboScriptRRS_SelectedIndexChanged);
@@ -1442,7 +1472,7 @@
             // 
             // btnSaveCommentRRS
             // 
-            this.btnSaveCommentRRS.Location = new System.Drawing.Point(508, 280);
+            this.btnSaveCommentRRS.Location = new System.Drawing.Point(327, 278);
             this.btnSaveCommentRRS.Name = "btnSaveCommentRRS";
             this.btnSaveCommentRRS.Size = new System.Drawing.Size(106, 23);
             this.btnSaveCommentRRS.TabIndex = 14;
@@ -1464,7 +1494,7 @@
             this.textBoxCommentRRS.Location = new System.Drawing.Point(76, 281);
             this.textBoxCommentRRS.Multiline = true;
             this.textBoxCommentRRS.Name = "textBoxCommentRRS";
-            this.textBoxCommentRRS.Size = new System.Drawing.Size(343, 20);
+            this.textBoxCommentRRS.Size = new System.Drawing.Size(243, 20);
             this.textBoxCommentRRS.TabIndex = 12;
             // 
             // btnSaveRRS
@@ -1518,7 +1548,7 @@
             // btnResetRRS
             // 
             this.btnResetRRS.Enabled = false;
-            this.btnResetRRS.Location = new System.Drawing.Point(410, 354);
+            this.btnResetRRS.Location = new System.Drawing.Point(327, 354);
             this.btnResetRRS.Name = "btnResetRRS";
             this.btnResetRRS.Size = new System.Drawing.Size(75, 23);
             this.btnResetRRS.TabIndex = 6;
@@ -1529,7 +1559,7 @@
             // btnStartRRS
             // 
             this.btnStartRRS.Enabled = false;
-            this.btnStartRRS.Location = new System.Drawing.Point(259, 341);
+            this.btnStartRRS.Location = new System.Drawing.Point(217, 341);
             this.btnStartRRS.Name = "btnStartRRS";
             this.btnStartRRS.Size = new System.Drawing.Size(103, 38);
             this.btnStartRRS.TabIndex = 5;
@@ -2542,7 +2572,7 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // listView1
+            // listViewOffer
             // 
             this.listViewOffer.BackColor = System.Drawing.SystemColors.Window;
             this.listViewOffer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2557,7 +2587,7 @@
             this.listViewOffer.GridLines = true;
             this.listViewOffer.Location = new System.Drawing.Point(3, 3);
             this.listViewOffer.MultiSelect = false;
-            this.listViewOffer.Name = "listView1";
+            this.listViewOffer.Name = "listViewOffer";
             this.listViewOffer.Size = new System.Drawing.Size(610, 198);
             this.listViewOffer.TabIndex = 3;
             this.listViewOffer.UseCompatibleStateImageBehavior = false;
@@ -2902,25 +2932,8 @@
             // 
             // tabPage10
             // 
-            this.tabPage10.Controls.Add(this.button54);
-            this.tabPage10.Controls.Add(this.cbPhamViMayTinh);
-            this.tabPage10.Controls.Add(this.button53);
-            this.tabPage10.Controls.Add(this.button52);
-            this.tabPage10.Controls.Add(this.button51);
-            this.tabPage10.Controls.Add(this.button50);
-            this.tabPage10.Controls.Add(this.button49);
-            this.tabPage10.Controls.Add(this.button48);
-            this.tabPage10.Controls.Add(this.button47);
-            this.tabPage10.Controls.Add(this.btnImportOtherSetting);
-            this.tabPage10.Controls.Add(this.button45);
-            this.tabPage10.Controls.Add(this.button44);
-            this.tabPage10.Controls.Add(this.button43);
-            this.tabPage10.Controls.Add(this.btnImportAllSetting);
-            this.tabPage10.Controls.Add(this.btnExportOtherSetting);
-            this.tabPage10.Controls.Add(this.button40);
-            this.tabPage10.Controls.Add(this.button39);
-            this.tabPage10.Controls.Add(this.button38);
-            this.tabPage10.Controls.Add(this.btnExportAllSetting);
+            this.tabPage10.Controls.Add(this.groupBox8);
+            this.tabPage10.Controls.Add(this.groupBox6);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
@@ -2929,197 +2942,158 @@
             this.tabPage10.Text = "ExSetting";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // button54
+            // groupBox8
             // 
-            this.button54.Location = new System.Drawing.Point(215, 343);
-            this.button54.Name = "button54";
-            this.button54.Size = new System.Drawing.Size(98, 34);
-            this.button54.TabIndex = 18;
-            this.button54.Text = "STOP ALL";
-            this.button54.UseVisualStyleBackColor = true;
-            this.button54.Click += new System.EventHandler(this.btnStopAll_Click);
+            this.groupBox8.Controls.Add(this.btnExStartAll);
+            this.groupBox8.Controls.Add(this.btnExStopAll);
+            this.groupBox8.Controls.Add(this.cbPhamViMayTinh);
+            this.groupBox8.Controls.Add(this.btnExResetAll);
+            this.groupBox8.Location = new System.Drawing.Point(14, 136);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(578, 100);
+            this.groupBox8.TabIndex = 20;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Fast Control";
+            // 
+            // btnExStartAll
+            // 
+            this.btnExStartAll.Location = new System.Drawing.Point(17, 32);
+            this.btnExStartAll.Name = "btnExStartAll";
+            this.btnExStartAll.Size = new System.Drawing.Size(95, 35);
+            this.btnExStartAll.TabIndex = 15;
+            this.btnExStartAll.Text = "START ALL";
+            this.btnExStartAll.UseVisualStyleBackColor = true;
+            this.btnExStartAll.Click += new System.EventHandler(this.btnExStartAll_Click);
+            // 
+            // btnExStopAll
+            // 
+            this.btnExStopAll.Location = new System.Drawing.Point(156, 33);
+            this.btnExStopAll.Name = "btnExStopAll";
+            this.btnExStopAll.Size = new System.Drawing.Size(98, 34);
+            this.btnExStopAll.TabIndex = 18;
+            this.btnExStopAll.Text = "STOP ALL";
+            this.btnExStopAll.UseVisualStyleBackColor = true;
+            this.btnExStopAll.Click += new System.EventHandler(this.btnExStopAll_Click);
             // 
             // cbPhamViMayTinh
             // 
             this.cbPhamViMayTinh.AutoSize = true;
             this.cbPhamViMayTinh.Checked = true;
             this.cbPhamViMayTinh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbPhamViMayTinh.Location = new System.Drawing.Point(478, 352);
+            this.cbPhamViMayTinh.Location = new System.Drawing.Point(458, 50);
             this.cbPhamViMayTinh.Name = "cbPhamViMayTinh";
             this.cbPhamViMayTinh.Size = new System.Drawing.Size(114, 17);
             this.cbPhamViMayTinh.TabIndex = 17;
             this.cbPhamViMayTinh.Text = "Phạm Vi Máy Tính";
             this.cbPhamViMayTinh.UseVisualStyleBackColor = true;
             // 
-            // button53
+            // btnExResetAll
             // 
-            this.button53.Location = new System.Drawing.Point(358, 342);
-            this.button53.Name = "button53";
-            this.button53.Size = new System.Drawing.Size(101, 34);
-            this.button53.TabIndex = 16;
-            this.button53.Text = "RESET ALL";
-            this.button53.UseVisualStyleBackColor = true;
-            this.button53.Click += new System.EventHandler(this.btnResetAll_Click);
+            this.btnExResetAll.Location = new System.Drawing.Point(295, 33);
+            this.btnExResetAll.Name = "btnExResetAll";
+            this.btnExResetAll.Size = new System.Drawing.Size(101, 34);
+            this.btnExResetAll.TabIndex = 16;
+            this.btnExResetAll.Text = "RESET ALL";
+            this.btnExResetAll.UseVisualStyleBackColor = true;
+            this.btnExResetAll.Click += new System.EventHandler(this.btnExResetAll_Click);
             // 
-            // button52
+            // groupBox6
             // 
-            this.button52.Location = new System.Drawing.Point(59, 342);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(95, 35);
-            this.button52.TabIndex = 15;
-            this.button52.Text = "START ALL";
-            this.button52.UseVisualStyleBackColor = true;
-            this.button52.Click += new System.EventHandler(this.btnSartAll_Click);
+            this.groupBox6.Controls.Add(this.cbExOtherSetting);
+            this.groupBox6.Controls.Add(this.cbExVip72);
+            this.groupBox6.Controls.Add(this.cbExSSH);
+            this.groupBox6.Controls.Add(this.cbExOffer);
+            this.groupBox6.Controls.Add(this.cbExCheckAll);
+            this.groupBox6.Controls.Add(this.btnExSetData);
+            this.groupBox6.Controls.Add(this.btnExExportData);
+            this.groupBox6.Controls.Add(this.btnExImportData);
+            this.groupBox6.Location = new System.Drawing.Point(14, 17);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(578, 102);
+            this.groupBox6.TabIndex = 19;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Fast Setting";
             // 
-            // button51
+            // cbExOtherSetting
             // 
-            this.button51.Location = new System.Drawing.Point(39, 289);
-            this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(117, 23);
-            this.button51.TabIndex = 14;
-            this.button51.Text = "Set Other Setting";
-            this.button51.UseVisualStyleBackColor = true;
-            this.button51.Click += new System.EventHandler(this.btnSetOtherSetting_Click);
+            this.cbExOtherSetting.AutoSize = true;
+            this.cbExOtherSetting.Location = new System.Drawing.Point(342, 58);
+            this.cbExOtherSetting.Name = "cbExOtherSetting";
+            this.cbExOtherSetting.Size = new System.Drawing.Size(88, 17);
+            this.cbExOtherSetting.TabIndex = 19;
+            this.cbExOtherSetting.Text = "Other Setting";
+            this.cbExOtherSetting.UseVisualStyleBackColor = true;
             // 
-            // button50
+            // cbExVip72
             // 
-            this.button50.Location = new System.Drawing.Point(39, 229);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(117, 23);
-            this.button50.TabIndex = 13;
-            this.button50.Text = "Set Vip72";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.btnSetVip72_Click);
+            this.cbExVip72.AutoSize = true;
+            this.cbExVip72.Location = new System.Drawing.Point(264, 58);
+            this.cbExVip72.Name = "cbExVip72";
+            this.cbExVip72.Size = new System.Drawing.Size(72, 17);
+            this.cbExVip72.TabIndex = 18;
+            this.cbExVip72.Text = "Vip72 List";
+            this.cbExVip72.UseVisualStyleBackColor = true;
             // 
-            // button49
+            // cbExSSH
             // 
-            this.button49.Location = new System.Drawing.Point(39, 170);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(117, 23);
-            this.button49.TabIndex = 12;
-            this.button49.Text = "Set SSH";
-            this.button49.UseVisualStyleBackColor = true;
-            this.button49.Click += new System.EventHandler(this.btnSetSSH_Click);
+            this.cbExSSH.AutoSize = true;
+            this.cbExSSH.Location = new System.Drawing.Point(182, 58);
+            this.cbExSSH.Name = "cbExSSH";
+            this.cbExSSH.Size = new System.Drawing.Size(67, 17);
+            this.cbExSSH.TabIndex = 17;
+            this.cbExSSH.Text = "SSH List";
+            this.cbExSSH.UseVisualStyleBackColor = true;
             // 
-            // button48
+            // cbExOffer
             // 
-            this.button48.Location = new System.Drawing.Point(39, 118);
-            this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(117, 23);
-            this.button48.TabIndex = 11;
-            this.button48.Text = "Set Offer List";
-            this.button48.UseVisualStyleBackColor = true;
-            this.button48.Click += new System.EventHandler(this.btnSetOfferList_Click);
+            this.cbExOffer.AutoSize = true;
+            this.cbExOffer.Location = new System.Drawing.Point(105, 58);
+            this.cbExOffer.Name = "cbExOffer";
+            this.cbExOffer.Size = new System.Drawing.Size(68, 17);
+            this.cbExOffer.TabIndex = 16;
+            this.cbExOffer.Text = "Offer List";
+            this.cbExOffer.UseVisualStyleBackColor = true;
             // 
-            // button47
+            // cbExCheckAll
             // 
-            this.button47.Location = new System.Drawing.Point(39, 63);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(117, 23);
-            this.button47.TabIndex = 10;
-            this.button47.Text = "Set All Setting";
-            this.button47.UseVisualStyleBackColor = true;
-            this.button47.Click += new System.EventHandler(this.btnSetAllSetting_Click);
+            this.cbExCheckAll.AutoSize = true;
+            this.cbExCheckAll.Location = new System.Drawing.Point(17, 58);
+            this.cbExCheckAll.Name = "cbExCheckAll";
+            this.cbExCheckAll.Size = new System.Drawing.Size(71, 17);
+            this.cbExCheckAll.TabIndex = 15;
+            this.cbExCheckAll.Text = "Check All";
+            this.cbExCheckAll.UseVisualStyleBackColor = true;
+            this.cbExCheckAll.CheckedChanged += new System.EventHandler(this.cbExCheckAll_CheckedChanged);
             // 
-            // btnImportOtherSetting
+            // btnExSetData
             // 
-            this.btnImportOtherSetting.Location = new System.Drawing.Point(431, 288);
-            this.btnImportOtherSetting.Name = "btnImportOtherSetting";
-            this.btnImportOtherSetting.Size = new System.Drawing.Size(116, 23);
-            this.btnImportOtherSetting.TabIndex = 9;
-            this.btnImportOtherSetting.Text = "Import Other Setting";
-            this.btnImportOtherSetting.UseVisualStyleBackColor = true;
-            this.btnImportOtherSetting.Click += new System.EventHandler(this.btnImportOtherSetting_Click);
+            this.btnExSetData.Location = new System.Drawing.Point(17, 19);
+            this.btnExSetData.Name = "btnExSetData";
+            this.btnExSetData.Size = new System.Drawing.Size(117, 23);
+            this.btnExSetData.TabIndex = 14;
+            this.btnExSetData.Text = "Set Data";
+            this.btnExSetData.UseVisualStyleBackColor = true;
+            this.btnExSetData.Click += new System.EventHandler(this.btnExSetData_Click);
             // 
-            // button45
+            // btnExExportData
             // 
-            this.button45.Location = new System.Drawing.Point(431, 228);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(116, 23);
-            this.button45.TabIndex = 8;
-            this.button45.Text = "Import Vip72";
-            this.button45.UseVisualStyleBackColor = true;
-            this.button45.Click += new System.EventHandler(this.btnImportVip72_Click);
+            this.btnExExportData.Location = new System.Drawing.Point(156, 19);
+            this.btnExExportData.Name = "btnExExportData";
+            this.btnExExportData.Size = new System.Drawing.Size(111, 23);
+            this.btnExExportData.TabIndex = 4;
+            this.btnExExportData.Text = "Export Data";
+            this.btnExExportData.UseVisualStyleBackColor = true;
+            this.btnExExportData.Click += new System.EventHandler(this.btnExExportData_Click);
             // 
-            // button44
+            // btnExImportData
             // 
-            this.button44.Location = new System.Drawing.Point(431, 169);
-            this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(116, 23);
-            this.button44.TabIndex = 7;
-            this.button44.Text = "Import SSH";
-            this.button44.UseVisualStyleBackColor = true;
-            this.button44.Click += new System.EventHandler(this.btnImportSSH_Click);
-            // 
-            // button43
-            // 
-            this.button43.Location = new System.Drawing.Point(431, 118);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(116, 23);
-            this.button43.TabIndex = 6;
-            this.button43.Text = "Import Offer List";
-            this.button43.UseVisualStyleBackColor = true;
-            this.button43.Click += new System.EventHandler(this.btnImportOfferList_Click);
-            // 
-            // btnImportAllSetting
-            // 
-            this.btnImportAllSetting.Location = new System.Drawing.Point(431, 63);
-            this.btnImportAllSetting.Name = "btnImportAllSetting";
-            this.btnImportAllSetting.Size = new System.Drawing.Size(116, 23);
-            this.btnImportAllSetting.TabIndex = 5;
-            this.btnImportAllSetting.Text = "Import All Setting";
-            this.btnImportAllSetting.UseVisualStyleBackColor = true;
-            this.btnImportAllSetting.Click += new System.EventHandler(this.btnImportAllSetting_Click);
-            // 
-            // btnExportOtherSetting
-            // 
-            this.btnExportOtherSetting.Location = new System.Drawing.Point(234, 289);
-            this.btnExportOtherSetting.Name = "btnExportOtherSetting";
-            this.btnExportOtherSetting.Size = new System.Drawing.Size(111, 23);
-            this.btnExportOtherSetting.TabIndex = 4;
-            this.btnExportOtherSetting.Text = "Export Other Setting";
-            this.btnExportOtherSetting.UseVisualStyleBackColor = true;
-            this.btnExportOtherSetting.Click += new System.EventHandler(this.btnExportOtherSetting_Click);
-            // 
-            // button40
-            // 
-            this.button40.Location = new System.Drawing.Point(234, 229);
-            this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(111, 23);
-            this.button40.TabIndex = 3;
-            this.button40.Text = "Export Vip72";
-            this.button40.UseVisualStyleBackColor = true;
-            this.button40.Click += new System.EventHandler(this.btnExportVip72_Click);
-            // 
-            // button39
-            // 
-            this.button39.Location = new System.Drawing.Point(234, 170);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(111, 23);
-            this.button39.TabIndex = 2;
-            this.button39.Text = "Export SSH";
-            this.button39.UseVisualStyleBackColor = true;
-            this.button39.Click += new System.EventHandler(this.btnExportSSH_Click);
-            // 
-            // button38
-            // 
-            this.button38.Location = new System.Drawing.Point(234, 118);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(111, 23);
-            this.button38.TabIndex = 1;
-            this.button38.Text = "Export Offer List";
-            this.button38.UseVisualStyleBackColor = true;
-            this.button38.Click += new System.EventHandler(this.btnExportOfferListClick);
-            // 
-            // btnExportAllSetting
-            // 
-            this.btnExportAllSetting.Location = new System.Drawing.Point(234, 63);
-            this.btnExportAllSetting.Name = "btnExportAllSetting";
-            this.btnExportAllSetting.Size = new System.Drawing.Size(111, 23);
-            this.btnExportAllSetting.TabIndex = 0;
-            this.btnExportAllSetting.Text = "Export All Setting";
-            this.btnExportAllSetting.UseVisualStyleBackColor = true;
-            this.btnExportAllSetting.Click += new System.EventHandler(this.btnExportAllSetting_Click);
+            this.btnExImportData.Location = new System.Drawing.Point(295, 19);
+            this.btnExImportData.Name = "btnExImportData";
+            this.btnExImportData.Size = new System.Drawing.Size(116, 23);
+            this.btnExImportData.TabIndex = 9;
+            this.btnExImportData.Text = "Import Data";
+            this.btnExImportData.UseVisualStyleBackColor = true;
+            this.btnExImportData.Click += new System.EventHandler(this.btnExImportData_Click);
             // 
             // tabLog
             // 
@@ -3318,6 +3292,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rsswaitnum)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabProxy.ResumeLayout(false);
@@ -3348,7 +3325,10 @@
             this.groupBox9.PerformLayout();
             this.Script.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
-            this.tabPage10.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.tabLog.ResumeLayout(false);
             this.tabLog.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -3884,61 +3864,25 @@
 		private global::System.Windows.Forms.TabPage tabPage10;
 
 		// Token: 0x0400015E RID: 350
-		private global::System.Windows.Forms.Button btnImportOtherSetting;
-
-		// Token: 0x0400015F RID: 351
-		private global::System.Windows.Forms.Button button45;
-
-		// Token: 0x04000160 RID: 352
-		private global::System.Windows.Forms.Button button44;
-
-		// Token: 0x04000161 RID: 353
-		private global::System.Windows.Forms.Button button43;
-
-		// Token: 0x04000162 RID: 354
-		private global::System.Windows.Forms.Button btnImportAllSetting;
+		private global::System.Windows.Forms.Button btnExImportData;
 
 		// Token: 0x04000163 RID: 355
-		private global::System.Windows.Forms.Button btnExportOtherSetting;
-
-		// Token: 0x04000164 RID: 356
-		private global::System.Windows.Forms.Button button40;
-
-		// Token: 0x04000165 RID: 357
-		private global::System.Windows.Forms.Button button39;
-
-		// Token: 0x04000166 RID: 358
-		private global::System.Windows.Forms.Button button38;
-
-		// Token: 0x04000167 RID: 359
-		private global::System.Windows.Forms.Button btnExportAllSetting;
+		private global::System.Windows.Forms.Button btnExExportData;
 
 		// Token: 0x04000168 RID: 360
-		private global::System.Windows.Forms.Button button51;
-
-		// Token: 0x04000169 RID: 361
-		private global::System.Windows.Forms.Button button50;
-
-		// Token: 0x0400016A RID: 362
-		private global::System.Windows.Forms.Button button49;
-
-		// Token: 0x0400016B RID: 363
-		private global::System.Windows.Forms.Button button48;
-
-		// Token: 0x0400016C RID: 364
-		private global::System.Windows.Forms.Button button47;
+		private global::System.Windows.Forms.Button btnExSetData;
 
 		// Token: 0x0400016D RID: 365
-		private global::System.Windows.Forms.Button button53;
+		private global::System.Windows.Forms.Button btnExResetAll;
 
 		// Token: 0x0400016E RID: 366
-		private global::System.Windows.Forms.Button button52;
+		private global::System.Windows.Forms.Button btnExStartAll;
 
 		// Token: 0x0400016F RID: 367
 		private global::System.Windows.Forms.CheckBox cbPhamViMayTinh;
 
 		// Token: 0x04000170 RID: 368
-		private global::System.Windows.Forms.Button button54;
+		private global::System.Windows.Forms.Button btnExStopAll;
 
 		// Token: 0x04000171 RID: 369
 		private global::System.Windows.Forms.NumericUpDown numericUpDown9;
@@ -3996,9 +3940,6 @@
 
 		// Token: 0x040001BE RID: 446
 		private global::System.Windows.Forms.CheckBox cbFakeIOS11;
-
-		// Token: 0x040001D1 RID: 465
-		private global::System.Windows.Forms.Button btnAutoSelectRRS;
 
 		// Token: 0x040001D2 RID: 466
 		private global::System.Windows.Forms.RichTextBox textSupportScript;
@@ -4070,5 +4011,16 @@
         private System.Windows.Forms.CheckBox cbFakeScreen;
         private System.Windows.Forms.CheckBox cbFakeModel;
         private System.Windows.Forms.CheckBox cbCheckApp;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox cbExOtherSetting;
+        private System.Windows.Forms.CheckBox cbExVip72;
+        private System.Windows.Forms.CheckBox cbExSSH;
+        private System.Windows.Forms.CheckBox cbExOffer;
+        private System.Windows.Forms.CheckBox cbExCheckAll;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

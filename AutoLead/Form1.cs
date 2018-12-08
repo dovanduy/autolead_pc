@@ -17,12 +17,17 @@ using Newtonsoft.Json;
 
 namespace AutoLead
 {
+    enum EnumRunningSTT
+    {
+        LEAD_RUN,
+        RRS_RUN,
+        NOT_RUN
+    }
+
     // Token: 0x0200001A RID: 26
     public partial class Form1 : Form, IDeviceConnectDelegate
 	{
         private System.Windows.Forms.Timer settingUpdateTimer;
-
-        public List<geo> listGeo;
 
         public string documentfolder;
 
@@ -52,18 +57,9 @@ namespace AutoLead
 		{
             this.settingUpdateTimer = new System.Windows.Forms.Timer();
 
-			this.changeslocal = 0;
 			this.changesssh = 0;
-			this.c_listofflocal = 0;
-			this.c_sshlocal = 0;
-			this.c_viplocal = 0;
-			this.c_othersettinglocal = 0;
-			this.c_startalllocal = 0;
-			this.c_resetalllocal = 0;
-			this.c_stopalllocal = 0;
 			this.scriptstatus = "stop";
 
-			this.listGeo = new List<geo>();
 			this._sshssh = false;
 			this.documentfolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\";
 
@@ -110,50 +106,7 @@ namespace AutoLead
 			this.listViewOffer.SmallImageList = imageList;
 			this.proxytool.Text = "SSH";
 
-			Process[] processesByName = Process.GetProcessesByName("AutoLead");
-			List<string> list = new List<string>();
-			Process[] array3 = processesByName;
-			for (int j = 0; j < array3.Length; j++)
-			{
-				string mainWindowTitle = array3[j].MainWindowTitle;
-				if (mainWindowTitle != "")
-				{
-					list.Add(mainWindowTitle.Split(new string[]
-					{
-						"|"
-					}, StringSplitOptions.None)[0]);
-				}
-			}
-			if (param == "start")
-			{
-				string[] array4 = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//iplist.txt");
-				for (int k = 0; k < array4.Length; k++)
-				{
-					string lastip = array4[k].Split(new string[]
-					{
-						"."
-					}, StringSplitOptions.None)[3];
-					if (list.FirstOrDefault((string x) => x == lastip) == null)
-					{
-						new Process
-						{
-							StartInfo = 
-							{
-								FileName = AppDomain.CurrentDomain.BaseDirectory + "AutoLead.exe",
-								Arguments = array4[k]
-							}
-						}.Start();
-						Thread.Sleep(500);
-					}
-				}
-				Application.Exit();
-				Environment.Exit(0);
-			}
-			if (param != "none")
-			{
-				this.DeviceIpControl.Text = param;
-				this.btnConnectDevice_Click(null, null);
-			}
+			
 			try
 			{
 				this.Text = this.DeviceIpControl.Text.Split(new string[]
@@ -321,310 +274,6 @@ namespace AutoLead
            return false;
         }
 
-        private void initGlobalSetting()
-        {
-            string contents = "";
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat"))
-            {
-                contents = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat");
-            }
-
-            if (contents == "")
-                return;
-
-            string[] array8 = contents.Split(new string[]
-                {
-                   "|"
-                }, StringSplitOptions.None);
-
-            int num = Convert.ToInt32(array8[0]);
-            int num2 = Convert.ToInt32(array8[1]);
-            int num3 = Convert.ToInt32(array8[2]);
-            int num4 = Convert.ToInt32(array8[3]);
-            int num5 = Convert.ToInt32(array8[4]);
-            int num6 = Convert.ToInt32(array8[5]);
-            int num7 = Convert.ToInt32(array8[6]);
-            int num8 = Convert.ToInt32(array8[7]);
-
-            this.changes = num;
-            this.c_listoff = num2;
-            this.c_othersetting = num3;
-            this.c_ssh = num4;
-            this.c_vip = num5;
-            this.c_startall = num6;
-            this.c_stopall = num7;
-            this.c_resetall = num8;
-
-        }
-
-        private void loadGlobalSetting()
-        {
-            string contents = "";
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat"))
-            {
-                contents = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat");
-            }
-            else
-            {
-                contents = string.Concat(new string[]
-                {
-                    this.changes.ToString(),
-                    "|",
-                    this.c_listoff.ToString(),
-                    "|",
-                    this.c_othersetting.ToString(),
-                    "|",
-                    this.c_ssh.ToString(),
-                    "|",
-                    this.c_vip.ToString(),
-                    "|",
-                    this.c_startall.ToString(),
-                    "|",
-                    this.c_stopall.ToString(),
-                    "|",
-                    this.c_resetall.ToString()
-                });
-                File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat", contents);
-            }
-
-            try
-            {
-                string[] array8 = contents.Split(new string[]
-                {
-                   "|"
-                }, StringSplitOptions.None);
-
-                int num = Convert.ToInt32(array8[0]);
-                int num2 = Convert.ToInt32(array8[1]);
-                int num3 = Convert.ToInt32(array8[2]);
-                int num4 = Convert.ToInt32(array8[3]);
-                int num5 = Convert.ToInt32(array8[4]);
-                int num6 = Convert.ToInt32(array8[5]);
-                int num7 = Convert.ToInt32(array8[6]);
-                int num8 = Convert.ToInt32(array8[7]);
-                if (this.changes != num)
-                {
-                    if (this.c_listoff != num2)
-                    {
-                        this.btnImportOfferList_Click(null, null);
-                    }
-                    if (this.c_othersetting != num3)
-                    {
-                        this.btnImportOtherSetting_Click(null, null);
-                    }
-                    if (this.c_ssh != num4)
-                    {
-                        this.btnImportSSH_Click(null, null);
-                    }
-                    if (this.c_vip != num5)
-                    {
-                        this.btnImportVip72_Click(null, null);
-                    }
-                    if (this.c_startall != num6 && this.btnStartLead.Text != "STOP")
-                    {
-                        this.btnStart_Click(null, null);
-                    }
-                    if (this.c_stopall != num7 && this.btnStartLead.Text == "STOP")
-                    {
-                        this.btnStart_Click(null, null);
-                    }
-                    if (this.c_resetall != num8)
-                    {
-                        if (this.btnStartLead.Text == "STOP")
-                        {
-                            this.btnStart_Click(null, null);
-                            this.Reset_Click(null, null);
-                        }
-                        else if (this.btnStartLead.Text == "RESUME")
-                        {
-                            this.Reset_Click(null, null);
-                        }
-                    }
-                    this.changes = num;
-                    this.c_listoff = num2;
-                    this.c_othersetting = num3;
-                    this.c_ssh = num4;
-                    this.c_vip = num5;
-                    this.c_startall = num6;
-                    this.c_stopall = num7;
-                    this.c_resetall = num8;
-
-                    contents = string.Concat(new string[]
-                {
-                    this.changes.ToString(),
-                    "|",
-                    this.c_listoff.ToString(),
-                    "|",
-                    this.c_othersetting.ToString(),
-                    "|",
-                    this.c_ssh.ToString(),
-                    "|",
-                    this.c_vip.ToString(),
-                    "|",
-                    this.c_startall.ToString(),
-                    "|",
-                    this.c_stopall.ToString(),
-                    "|",
-                    this.c_resetall.ToString()
-                });
-                    File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\changes.dat", contents);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.LogMessage(ex.ToString(), Color.Black);
-            }
-        }
-
-        private void initLocalSetting()
-        {
-            string contents = "";
-            if (File.Exists(this.documentfolder + "changes.dat"))
-            {
-                contents = File.ReadAllText(this.documentfolder + "changes.dat");
-            }
-            if (contents == "")
-                return;
-
-            string[] array9 = contents.Split(new string[]{"|"}, StringSplitOptions.None);
-
-            int num9 = Convert.ToInt32(array9[0]);
-            int num10 = Convert.ToInt32(array9[1]);
-            int num11 = Convert.ToInt32(array9[2]);
-            int num12 = Convert.ToInt32(array9[3]);
-            int num13 = Convert.ToInt32(array9[4]);
-            int num14 = Convert.ToInt32(array9[5]);
-            int num15 = Convert.ToInt32(array9[6]);
-            int num16 = Convert.ToInt32(array9[7]);
-
-            this.changeslocal = num9;
-            this.c_listofflocal = num10;
-            this.c_othersettinglocal = num11;
-            this.c_sshlocal = num12;
-            this.c_viplocal = num13;
-            this.c_startalllocal = num14;
-            this.c_stopalllocal = num15;
-            this.c_resetalllocal = num16;
-
-        }
-
-        private void loadLocalSetting()
-        {
-            string contents = "";
-            if (File.Exists(this.documentfolder + "changes.dat"))
-            {
-                contents = File.ReadAllText(this.documentfolder + "changes.dat");
-            }
-            else {
-                contents = string.Concat(new string[]
-                {
-                    this.changeslocal.ToString(),
-                    "|",
-                    this.c_listofflocal.ToString(),
-                    "|",
-                    this.c_othersettinglocal.ToString(),
-                    "|",
-                    this.c_sshlocal.ToString(),
-                    "|",
-                    this.c_viplocal.ToString(),
-                    "|",
-                    this.c_startalllocal.ToString(),
-                    "|",
-                    this.c_stopalllocal.ToString(),
-                    "|",
-                    this.c_resetalllocal.ToString()
-                });
-                File.WriteAllText(this.documentfolder + "changes.dat", contents);
-            }
-            
-            try
-            {
-                string[] array9 = contents.Split(new string[]
-                {
-                                                        "|"
-                }, StringSplitOptions.None);
-                int num9 = Convert.ToInt32(array9[0]);
-                int num10 = Convert.ToInt32(array9[1]);
-                int num11 = Convert.ToInt32(array9[2]);
-                int num12 = Convert.ToInt32(array9[3]);
-                int num13 = Convert.ToInt32(array9[4]);
-                int num14 = Convert.ToInt32(array9[5]);
-                int num15 = Convert.ToInt32(array9[6]);
-                int num16 = Convert.ToInt32(array9[7]);
-                if (this.changeslocal != num9)
-                {
-                    if (this.c_listofflocal != num10)
-                    {
-                        this.btnImportOfferList_Click(null, null);
-                    }
-                    if (this.c_sshlocal != num12)
-                    {
-                        this.btnImportSSH_Click(null, null);
-                    }
-                    if (this.c_viplocal != num13)
-                    {
-                        this.btnImportVip72_Click(null, null);
-                    }
-                    if (this.c_othersettinglocal != num11)
-                    {
-                        this.btnImportOtherSetting_Click(null, null);
-                    }
-                    if (this.c_startalllocal != num14 && this.btnStartLead.Text != "STOP")
-                    {
-                        this.btnStart_Click(null, null);
-                    }
-                    if (this.c_stopalllocal != num15 && this.btnStartLead.Text == "STOP")
-                    {
-                        this.btnStart_Click(null, null);
-                    }
-                    if (num16 != this.c_resetalllocal)
-                    {
-                        if (this.btnStartLead.Text == "STOP")
-                        {
-                            this.btnStart_Click(null, null);
-                            this.Reset_Click(null, null);
-                        }
-                        else if (this.btnStartLead.Text == "RESUME")
-                        {
-                            this.Reset_Click(null, null);
-                        }
-                    }
-                    this.changeslocal = num9;
-                    this.c_listofflocal = num10;
-                    this.c_othersettinglocal = num11;
-                    this.c_sshlocal = num12;
-                    this.c_viplocal = num13;
-                    this.c_startalllocal = num14;
-                    this.c_stopalllocal = num15;
-                    this.c_resetalllocal = num16;
-
-                    contents = string.Concat(new string[]
-                   {
-                        this.changeslocal.ToString(),
-                        "|",
-                        this.c_listofflocal.ToString(),
-                        "|",
-                        this.c_othersettinglocal.ToString(),
-                        "|",
-                        this.c_sshlocal.ToString(),
-                        "|",
-                        this.c_viplocal.ToString(),
-                        "|",
-                        this.c_startalllocal.ToString(),
-                        "|",
-                        this.c_stopalllocal.ToString(),
-                        "|",
-                        this.c_resetalllocal.ToString()
-                   });
-                    File.WriteAllText(this.documentfolder + "changes.dat", contents);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.LogMessage(ex.ToString(), Color.Black);
-            }
-        }
-
 		private void onReceiveDeviceInfo(string text)
 		{
             player.Stop();
@@ -697,14 +346,10 @@ namespace AutoLead
                 }
 
                 this.initSSHSetting();
-                this.initGlobalSetting();
-                this.initLocalSetting();
 
                 this.settingUpdateTimer.Interval = 1000;
                 this.settingUpdateTimer.Tick += delegate (object o, EventArgs ex)
                 {
-                    loadLocalSetting();
-                    loadGlobalSetting();
                     loadSSHSetting();
                 };
                 this.settingUpdateTimer.Start();

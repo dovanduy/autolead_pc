@@ -1,8 +1,10 @@
-﻿using System;
+﻿using AutoLeadX;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,202 +12,167 @@ namespace AutoLead
 {
     partial class Form1 : Form
     {
-        // Token: 0x0400004B RID: 75
-        public int changes;
 
-        // Token: 0x0400004C RID: 76
-        public int c_listoff;
-
-        // Token: 0x0400004D RID: 77
-        public int c_ssh;
-
-        // Token: 0x0400004E RID: 78
-        public int c_vip;
-
-        // Token: 0x0400004F RID: 79
-        public int c_othersetting;
-
-        // Token: 0x04000050 RID: 80
-        public int c_startall;
-
-        // Token: 0x04000051 RID: 81
-        public int c_resetall;
-
-        // Token: 0x04000052 RID: 82
-        public int c_stopall;
-
-        // Token: 0x04000053 RID: 83
-        public int changeslocal;
-
-        // Token: 0x04000055 RID: 85
-        public int c_listofflocal;
-
-        // Token: 0x04000056 RID: 86
-        public int c_sshlocal;
-
-        // Token: 0x04000057 RID: 87
-        public int c_viplocal;
-
-        // Token: 0x04000058 RID: 88
-        public int c_othersettinglocal;
-
-        // Token: 0x04000059 RID: 89
-        public int c_startalllocal;
-
-        // Token: 0x0400005A RID: 90
-        public int c_resetalllocal;
-
-        // Token: 0x0400005B RID: 91
-        public int c_stopalllocal;
-
-        // Token: 0x06000196 RID: 406 RVA: 0x0001A990 File Offset: 0x00018B90
-        private void btnStopAll_Click(object sender, EventArgs e)
+        private void initAutoConfigThread()
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
+            (new Thread(() =>
             {
-                this.changes = 1 - this.changes;
-                this.c_stopall = 1 - this.c_stopall;
-            }
-            else
+                while (true)
+                {
+                    EventWaitHandle completedA = NamedEvents.OpenOrWait("ImportFromGlobal");
+                    completedA.WaitOne();
+                    importOfferListFromGlobal();
+                    importSSHFromGlobal();
+                    importVip72FromGlobal();
+                    importOtherSettingFromGlobal();
+                }
+            })).Start();
+
+            (new Thread(() =>
             {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_stopalllocal = 1 - this.c_stopalllocal;
-            }
-            this.exportchanges();
+                while (true)
+                {
+                    EventWaitHandle completedA = NamedEvents.OpenOrWait("StopAll");
+                    completedA.WaitOne();
+                    if (this.btnStartLead.Text == "STOP")
+                    {
+                        this.btnStartLead.Invoke(new MethodInvoker(delegate
+                        {
+                            this.btnStart_Click(null, null);
+                        }));
+                    }
+                }
+            })).Start();
+
+            (new Thread(() =>
+            {
+                while (true)
+                {
+                    EventWaitHandle completedA = NamedEvents.OpenOrWait("ResetAll");
+                    completedA.WaitOne();
+                    if (this.Reset.Enabled && this.Reset.Text == "Reset")
+                    {
+                        this.Reset.Invoke(new MethodInvoker(delegate
+                        {
+                            this.Reset_Click(null, null);
+                        }));
+                    }
+                }
+            })).Start();
+
+            (new Thread(() =>
+            {
+                while (true)
+                {
+                    EventWaitHandle completedA = NamedEvents.OpenOrWait("StartAll");
+                    completedA.WaitOne();
+                    if (this.btnStartLead.Text == "START")
+                    {
+                        this.btnStartLead.Invoke(new MethodInvoker(delegate
+                        {
+                            this.btnStart_Click(null, null);
+                        }));
+                    }
+                }
+            })).Start();
         }
 
-        // Token: 0x06000195 RID: 405 RVA: 0x0001A928 File Offset: 0x00018B28
-        private void btnResetAll_Click(object sender, EventArgs e)
+        private void cbExCheckAll_CheckedChanged(object sender, EventArgs e)
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
-            {
-                this.changes = 1 - this.changes;
-                this.c_resetall = 1 - this.c_resetall;
-            }
-            else
-            {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_resetalllocal = 1 - this.c_resetalllocal;
-            }
-            this.exportchanges();
+            bool isChecked = this.cbExCheckAll.Checked;
+            this.cbExOffer.Checked = isChecked;
+            this.cbExSSH.Checked = isChecked;
+            this.cbExVip72.Checked = isChecked;
+            this.cbExOtherSetting.Checked = isChecked;
         }
 
-        // Token: 0x06000194 RID: 404 RVA: 0x0001A8C0 File Offset: 0x00018AC0
-        private void btnSartAll_Click(object sender, EventArgs e)
+        private void clearGlobalData()
         {
-            if (!this.cbPhamViMayTinh.Checked)
+            System.IO.DirectoryInfo di = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting");
+
+            foreach (FileInfo file in di.GetFiles())
             {
-                this.changes = 1 - this.changes;
-                this.c_startall = 1 - this.c_startall;
+                file.Delete();
             }
-            else
+            foreach (DirectoryInfo dir in di.GetDirectories())
             {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_startalllocal = 1 - this.c_startalllocal;
+                dir.Delete(true);
             }
-            this.exportchanges();
         }
 
-        // Token: 0x06000191 RID: 401 RVA: 0x0001A770 File Offset: 0x00018970
-        private void btnSetSSH_Click(object sender, EventArgs e)
+        private void btnExExportData_Click(object sender, EventArgs e)
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
+            clearGlobalData();
+            if (this.cbExOffer.Checked)
             {
-                this.changes = 1 - this.changes;
-                this.c_ssh = 1 - this.c_ssh;
+                exportOfferListToGlobal();
             }
-            else
+
+            if (this.cbExSSH.Checked)
             {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_sshlocal = 1 - this.c_sshlocal;
+                exportSSHToGlobal();
             }
-            this.btnExportSSH_Click(null, null);
-            this.exportchanges();
+
+            if (this.cbExVip72.Checked)
+            {
+                exportVip72ToGlobal();
+            }
+
+            if (this.cbExOtherSetting.Checked)
+            {
+                exportOtherSettingToGlobal();
+            }
         }
 
-        // Token: 0x06000192 RID: 402 RVA: 0x0001A7E0 File Offset: 0x000189E0
-        private void btnSetVip72_Click(object sender, EventArgs e)
+        private void btnExImportData_Click(object sender, EventArgs e)
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
+            if (this.cbExOffer.Checked)
             {
-                this.changes = 1 - this.changes;
-                this.c_vip = 1 - this.c_vip;
+                importOfferListFromGlobal();
             }
-            else
+
+            if (this.cbExSSH.Checked)
             {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_viplocal = 1 - this.c_viplocal;
+                importSSHFromGlobal();
             }
-            this.btnExportVip72_Click(null, null);
-            this.exportchanges();
+
+            if (this.cbExVip72.Checked)
+            {
+                importVip72FromGlobal();
+            }
+
+            if (this.cbExOtherSetting.Checked)
+            {
+                importOtherSettingFromGlobal();
+            }
         }
 
-        // Token: 0x06000193 RID: 403 RVA: 0x0001A850 File Offset: 0x00018A50
-        private void btnSetOtherSetting_Click(object sender, EventArgs e)
+        private void btnExSetData_Click(object sender, EventArgs e)
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
-            {
-                this.changes = 1 - this.changes;
-                this.c_othersetting = 1 - this.c_othersetting;
-            }
-            else
-            {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_othersettinglocal = 1 - this.c_othersettinglocal;
-            }
-            this.btnExportOtherSetting_Click(null, null);
-            this.exportchanges();
+            btnExExportData_Click(null, null);
+            EventWaitHandle completedA = NamedEvents.OpenOrCreate("ImportFromGlobal", false, EventResetMode.AutoReset);
+            completedA.Set();
         }
 
-        // Token: 0x0600018F RID: 399 RVA: 0x0001A634 File Offset: 0x00018834
-        private void btnSetAllSetting_Click(object sender, EventArgs e)
+        private void btnExStopAll_Click(object sender, EventArgs e)
         {
-            if (!this.cbPhamViMayTinh.Checked)
-            {
-                this.changes = 1 - this.changes;
-                this.c_listoff = 1 - this.c_listoff;
-                this.c_othersetting = 1 - this.c_othersetting;
-                this.c_ssh = 1 - this.c_ssh;
-                this.c_vip = 1 - this.c_vip;
-            }
-            else
-            {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_listofflocal = 1 - this.c_listofflocal;
-                this.c_othersettinglocal = 1 - this.c_othersettinglocal;
-                this.c_sshlocal = 1 - this.c_sshlocal;
-                this.c_viplocal = 1 - this.c_viplocal;
-            }
-            this.btnExportAllSetting_Click(null, null);
-            this.exportchanges();
+            EventWaitHandle completedA = NamedEvents.OpenOrCreate("StopAll", false, EventResetMode.AutoReset);
+            completedA.Set();
         }
 
-        // Token: 0x06000190 RID: 400 RVA: 0x0001A6F8 File Offset: 0x000188F8
-        private void btnSetOfferList_Click(object sender, EventArgs e)
+        private void btnExStartAll_Click(object sender, EventArgs e)
         {
-            bool flag = !this.cbPhamViMayTinh.Checked;
-            if (flag)
-            {
-                this.changes = 1 - this.changes;
-                this.c_listoff = 1 - this.c_listoff;
-            }
-            else
-            {
-                this.changeslocal = 1 - this.changeslocal;
-                this.c_listofflocal = 1 - this.c_listofflocal;
-            }
-            this.btnResetAll_Click(null, null);
-            this.btnExportOfferListClick(null, null);
-            this.exportchanges();
+            EventWaitHandle completedA = NamedEvents.OpenOrCreate("StartAll", false, EventResetMode.AutoReset);
+            completedA.Set();
         }
 
-        // Token: 0x0600018C RID: 396 RVA: 0x0001A370 File Offset: 0x00018570
-        private void btnImportOtherSetting_Click(object sender, EventArgs e)
+        private void btnExResetAll_Click(object sender, EventArgs e)
+        {
+            EventWaitHandle completedA = NamedEvents.OpenOrCreate("ResetAll", false, EventResetMode.AutoReset);
+            completedA.Set();
+        }
+
+        private void importOtherSettingFromGlobal()
         {
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\setting.json";
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\setting.json";
@@ -226,13 +193,17 @@ namespace AutoLead
             catch (Exception)
             {
             }
-            this.loadOtherSetting();
-            this.loadScriptsRRSApp();
-            this.loadScriptsAL();
+            base.Invoke(new MethodInvoker(delegate
+            {
+                this.loadOtherSetting();
+                this.loadScriptsRRSApp();
+                this.loadScriptsAL();
+            }));
+
+            
         }
 
-        // Token: 0x0600018B RID: 395 RVA: 0x0001A2C8 File Offset: 0x000184C8
-        private void btnImportVip72_Click(object sender, EventArgs e)
+        private void importVip72FromGlobal()
         {
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\vip72.dat";
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\vip72.dat";
@@ -248,11 +219,14 @@ namespace AutoLead
             catch (Exception)
             {
             }
-            this.loadvip72();
+            base.Invoke(new MethodInvoker(delegate
+            {
+                this.loadvip72();
+            }));
+            
         }
 
-        // Token: 0x0600018A RID: 394 RVA: 0x0001A220 File Offset: 0x00018420
-        private void btnImportSSH_Click(object sender, EventArgs e)
+        private void importSSHFromGlobal()
         {
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\ssh.dat";
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\ssh.dat";
@@ -268,11 +242,14 @@ namespace AutoLead
             catch (Exception ex)
             {
             }
-            this.loadssh();
+            base.Invoke(new MethodInvoker(delegate
+            {
+                this.loadssh();
+            }));
+            
         }
 
-        // Token: 0x06000189 RID: 393 RVA: 0x0001A178 File Offset: 0x00018378
-        private void btnImportOfferList_Click(object sender, EventArgs e)
+        private void importOfferListFromGlobal()
         {
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\offerlist.dat";
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\offerlist.dat";
@@ -288,20 +265,15 @@ namespace AutoLead
             catch (Exception)
             {
             }
-            this.loadofferlist();
+            base.Invoke(new MethodInvoker(delegate
+            {
+                this.loadofferlist();
+            }));
+            
         }
 
-        // Token: 0x0600018D RID: 397 RVA: 0x00002547 File Offset: 0x00000747
-        private void btnImportAllSetting_Click(object sender, EventArgs e)
-        {
-            this.btnImportOfferList_Click(null, null);
-            this.btnImportSSH_Click(null, null);
-            this.btnImportVip72_Click(null, null);
-            this.btnImportOtherSetting_Click(null, null);
-        }
 
-        // Token: 0x06000188 RID: 392 RVA: 0x0001A098 File Offset: 0x00018298
-        private void btnExportOtherSetting_Click(object sender, EventArgs e)
+        private void exportOtherSettingToGlobal()
         {
             this.savescripts();
             this.savescriptsAL();
@@ -326,8 +298,7 @@ namespace AutoLead
             }
         }
 
-        // Token: 0x06000187 RID: 391 RVA: 0x00019FF8 File Offset: 0x000181F8
-        private void btnExportVip72_Click(object sender, EventArgs e)
+        private void exportVip72ToGlobal()
         {
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\vip72.dat";
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\vip72.dat";
@@ -345,8 +316,7 @@ namespace AutoLead
             }
         }
 
-        // Token: 0x06000186 RID: 390 RVA: 0x00019F58 File Offset: 0x00018158
-        private void btnExportSSH_Click(object sender, EventArgs e)
+        private void exportSSHToGlobal()
         {
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\ssh.dat";
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\ssh.dat";
@@ -364,8 +334,7 @@ namespace AutoLead
             }
         }
 
-        // Token: 0x06000185 RID: 389 RVA: 0x00019EB8 File Offset: 0x000180B8
-        private void btnExportOfferListClick(object sender, EventArgs e)
+        private void exportOfferListToGlobal()
         {
             string sourceFileName = AppDomain.CurrentDomain.BaseDirectory + this.DeviceInfo.SerialNumber + "\\offerlist.dat";
             string destFileName = AppDomain.CurrentDomain.BaseDirectory + "GlobalSetting\\offerlist.dat";
@@ -383,17 +352,7 @@ namespace AutoLead
             }
         }
 
-        // Token: 0x06000184 RID: 388 RVA: 0x00002520 File Offset: 0x00000720
-        private void btnExportAllSetting_Click(object sender, EventArgs e)
-        {
-            this.btnExportOfferListClick(null, null);
-            this.btnExportSSH_Click(null, null);
-            this.btnExportVip72_Click(null, null);
-            this.btnExportOtherSetting_Click(null, null);
-
-        }
-
-        // Token: 0x0600018E RID: 398 RVA: 0x0001A460 File Offset: 0x00018660
+        /*
         private void exportchanges()
         {
             bool flag = !this.cbPhamViMayTinh.Checked;
@@ -442,5 +401,6 @@ namespace AutoLead
                 File.WriteAllText(this.documentfolder + "changes.dat", contents2);
             }
         }
+        */
     }
 }

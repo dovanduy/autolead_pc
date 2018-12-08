@@ -527,7 +527,6 @@ namespace AutoLead
             {
                 "\n"
             }, StringSplitOptions.None);
-            List<textvar> list = new List<textvar>();
             string[] array2 = array;
             for (int i = 0; i < array2.Length; i++)
             {
