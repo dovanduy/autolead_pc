@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D61D03DF-56A0-44D9-A7C3-63499A77C5B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutoLeadX</RootNamespace>
+    <AssemblyName>AutoLeadX</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>AutoLead.ico</ApplicationIcon>
+    <StartupObject>AutoLead.Program</StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoUpdater.NET, Version=1.4.11.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.4.11\lib\net40\AutoUpdater.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ChilkatDotNet46, Version=9.5.0.69, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\ChilkatDotNet46.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Routrek.granados">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\Routrek.granados.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="IPAddressControlLib">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\IPAddressControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PublicDomain">
+      <HintPath>..\..\..\Reverse Engineering\AutoLead\AutoLead 7.2\PC\PublicDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app.cs" />
+    <Compile Include="TabAppData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="appDetail.cs" />
+    <Compile Include="appInfo.cs" />
+    <Compile Include="AutoClosingMessageBox.cs" />
+    <Compile Include="BlowFish.cs" />
+    <Compile Include="DeviceCommunicator.cs" />
+    <Compile Include="EnumRunningSTT.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="IDeviceConnectDelegate.cs" />
+    <Compile Include="InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceVip72.cs" />
+    <Compile Include="ScriptEntity.cs" />
+    <Compile Include="SSHConnector.cs" />
+    <Compile Include="TabAutoLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupObj.cs" />
+    <Compile Include="Carrier.cs" />
+    <Compile Include="command.cs" />
+    <Compile Include="commandResult.cs" />
+    <Compile Include="ConfigData.cs" />
+    <Compile Include="countrycode.cs" />
+    <Compile Include="countrycodeiOS.cs" />
+    <Compile Include="DataConfig.cs" />
+    <Compile Include="deviceInfo.cs" />
+    <Compile Include="deviceScreens.cs" />
+    <Compile Include="DownloadProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownloadProgress.Designer.cs">
+      <DependentUpon>DownloadProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="generateDeviceID.cs" />
+    <Compile Include="geo.cs" />
+    <Compile Include="iDevice.cs" />
+    <Compile Include="ipData.cs" />
+    <Compile Include="languagecode.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
+    <Compile Include="ListViewItem1.cs" />
+    <Compile Include="LV_ITEM.cs" />
+    <Compile Include="NetworkHelper.cs" />
+    <Compile Include="NMHDR.cs" />
+    <Compile Include="NMITEMACTIVATE.cs" />
+    <Compile Include="offerItem.cs" />
+    <Compile Include="OfferOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfferOption.Designer.cs">
+      <DependentUpon>OfferOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POINT.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProxyTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reader.cs" />
+    <Compile Include="RNCryptor\AesMode.cs" />
+    <Compile Include="RNCryptor\Algorithm.cs" />
+    <Compile Include="RNCryptor\Cryptor.cs" />
+    <Compile Include="RNCryptor\Decryptor.cs" />
+    <Compile Include="RNCryptor\Encryptor.cs" />
+    <Compile Include="RNCryptor\HmacAlgorithm.cs" />
+    <Compile Include="RNCryptor\Options.cs" />
+    <Compile Include="RNCryptor\PayloadComponents.cs" />
+    <Compile Include="RNCryptor\Pbkdf2Prf.cs" />
+    <Compile Include="RNCryptor\Schema.cs" />
+    <Compile Include="RunData.cs" />
+    <Compile Include="Script.cs" />
+    <Compile Include="ssh.cs" />
+    <Compile Include="SshChecker.cs" />
+    <Compile Include="sshcommand.cs" />
+    <Compile Include="TabExSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabMicroProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabProxyVIP72.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabRRS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabSSHProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabSupport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="textvar.cs" />
+    <Compile Include="ThreadAutoLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadAutoRRS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadChangeIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadComm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadContinueRRS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadExecuteScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadManager.cs" />
+    <Compile Include="ThreadRestoreRRS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadSaveRRS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadWipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateHelpter.cs" />
+    <Compile Include="Updater.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Vip72.cs" />
+    <Compile Include="Vip72Chung.cs" />
+    <Compile Include="vipaccount.cs" />
+    <Compile Include="Win32AllocationTypes.cs" />
+    <Compile Include="Win32MemoryProtection.cs" />
+    <Compile Include="Win32ProcessAccessType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DownloadProgress.resx">
+      <DependentUpon>DownloadProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfferOption.resx">
+      <DependentUpon>OfferOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\enter" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200px-Green_cross.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteRed.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

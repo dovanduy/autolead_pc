@@ -1,0 +1,16 @@
+autoleadthread step:
+1. change ip
+2. wipe all app
+3. fake new info
+Enum offer list item:
+1. check T? d?ng b? tick offer n?u offer không vào AppStore
+2. open offer link
+while frontApp == "" or frontApp = "safari"
+	- click safari
+	- if app opened => break
+	- on timeout:
+		+ if frontApp == "" => terminate
+		+ else => change ip => send cmd get-front
+end loop
+
+end loop

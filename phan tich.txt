@@ -1,0 +1,306 @@
+tab1 AutoLead
+member:
+checkBox23_CheckedChanged 	//Smartlink
+textBox11_TextChanged		//OfferID
+checkBox18_CheckedChanged	//Check Trung IP
+checkBox12_CheckedChanged	//Luu IP Tren Comment
+numericUpDown6_ValueChanged
+checkBox10_CheckedChanged	//Han che so luot chay
+numericUpDown3_ValueChanged	//Ti le
+comment_TextChanged		//comment
+itunesY_ValueChanged		
+itunesX_ValueChanged
+safariY_ValueChanged
+safariX_ValueChanged
+button21_Click			//Clear Install File
+Reset_Click			//Reset
+checkBox3_CheckedChanged	//Full Backup
+checkBox2_CheckedChanged	//Full Wipe
+button7_Click			//START
+checkBox1_CheckedChanged	//Backup
+button6_Click			//Remove All
+button5_Click			//Remove
+button4_Click			//Edit
+button3_Click			//Add
+listView1_ItemCheck		//Offers List
+listView1_SelectedIndexChanged	////Offers List
+
+tab3: //SSH tab
+tabPage3_Click
+checkBox17_CheckedChanged
+button59_Click
+button58_Click
+Split_Click
+numericUpDown2_ValueChanged
+button25_Click
+button24_Click
+button22_Click
+button8_Click
+button14_Click
+button9_Click
+importfromfile_Click
+listView2_KeyDown
+listView2_KeyPress
+
+tab4: //vip72 tab
+tabPage4_Click
+sameVip_CheckedChanged
+button10_Click
+vipdelete_Click
+listView3_KeyDown
+
+tab6	//Setting tab
+tabPage6_MouseClick
+textBox5_TextChanged
+listView5_MouseClick
+listView5_MouseDoubleClick
+checkBox20_CheckedChanged
+longtitude_ValueChanged
+ltimezone_TextChanged
+ltimezone_Click
+checkBox19_CheckedChanged
+checkBox13_CheckedChanged
+checkBox5_CheckedChanged
+checkBox9_CheckedChanged
+latitude_ValueChanged
+carrierBox_SelectedIndexChanged
+fakelang_CheckedChanged
+comboBox2_SelectedIndexChanged
+fakeregion_CheckedChanged
+comboBox1_SelectedIndexChanged
+comboBox1_TextChanged
+comboBox1_KeyPress
+groupBox7_Enter
+svRefresh_Click
+comboBox4_SelectedIndexChanged
+checkBox21_CheckedChanged
+numericUpDown10_ValueChanged
+checkBox8_CheckedChanged
+numericUpDown5_ValueChanged
+checkBox4_CheckedChanged
+numericUpDown4_ValueChanged
+trackBar2_ValueChanged
+c_fakescreen_CheckedChanged
+fakeversion_CheckedChanged
+iphone_CheckedChanged
+ipad_CheckedChanged
+ipod_CheckedChanged
+checkBox11_CheckedChanged
+fakemodel_CheckedChanged
+fakedevice_CheckedChanged
+checkBox15_CheckedChanged
+checkBox14_CheckedChanged
+
+tab7: //RRS tab
+tabPage7_Click
+button66_Click_2
+button65_Click
+checkBox7_CheckedChanged
+comboBox3_SelectedIndexChanged
+checkBox6_CheckedChanged
+button31_Click
+button29_Click
+button27_Click
+rsswaitnum_ValueChanged
+bkreset_Click
+button19_Click
+button17_Click
+button16_Click
+button15_Click
+listView4_ColumnClick
+listView4_DrawColumnHeader
+listView4_DrawItem
+listView4_DrawSubItem
+listView4_ItemCheck
+listView4_ItemChecked
+listView4_SelectedIndexChanged
+listView4_KeyDown
+
+tab8: //Support tab
+tabPage8_Click
+pausescript_Click
+textBox2_TextChanged_1
+button64_Click
+button35_Click
+button30_Click
+button11_Click
+textBox1_TextChanged
+button26_Click
+button18_Click
+button28_Click
+button13_Click
+button12_Click
+button10_Click_1
+pictureBox1_MouseDown
+pictureBox1_MouseMove
+
+tab9: //Nap code tab
+button36_Click
+
+Script: //Script tab
+textBox9_TextChanged
+button34_Click
+button33_Click
+button32_Click
+listView7_SelectedIndexChanged
+listView7_KeyDown
+listView7_MouseClick
+listView7_MouseDown
+listView7_MouseUp
+textBox6_TextChanged
+listView6_SelectedIndexChanged
+listView6_KeyDown
+listView6_MouseClick
+listView6_MouseDown
+listView6_MouseUp
+
+tab10 //ExSetting tab
+button54_Click
+button53_Click
+button52_Click
+button51_Click
+button50_Click
+button49_Click
+button48_Click
+button47_Click
+button46_Click
+button45_Click
+button44_Click
+button43_Click
+button42_Click
+button41_Click
+button40_Click
+button39_Click
+button38_Click
+button37_Click
+
+tab11 //App data setting tab
+button63_Click
+listView9_KeyDown
+listView9_MouseClick
+button61_Click
+button56_Click
+button55_Click
+listView8_SelectedIndexChanged
+listView8_DoubleClick
+listView8_KeyDown
+listView8_MouseClick
+listApp_SelectedIndexChanged
+listApp_DoubleClick
+
+tab12: //Auto select RRS
+tabPage12_Click
+button62_Click
+button60_Click
+comboBox7_SelectedIndexChanged
+comboBox6_SelectedIndexChanged
+randomSelectRRS_CheckedChanged
+RRS8max_ValueChanged
+RRS7max_ValueChanged
+RRS6max_ValueChanged
+RRS5max_ValueChanged
+RRS8min_ValueChanged
+RRS7min_ValueChanged
+RRS6min_ValueChanged
+RRS5min_ValueChanged
+RRS4max_ValueChanged
+RRS3max_ValueChanged
+RRS2max_ValueChanged
+RRS1max_ValueChanged
+RRS4min_ValueChanged
+RRS3min_ValueChanged
+RRS2min_ValueChanged
+RRS1min_ValueChanged
+
+tab13: //network setting
+button67_Click_1
+autoreconnect_CheckedChanged
+deleteToolStripMenuItem_Click
+deleteToolStripMenuItem1_Click
+toolStripMenuItem1_Click
+b?oV?D?Li?uToolStripMenuItem_Click
+contextMenuStrip4_Opening
+deleteToolStripMenuItem2_Click
+
+
+
+
+tab2 Proxy
+	tab3 SSH
+	tab4 Vip72
+tab6	Setting
+tab7 	RRS
+tab8 	Support
+tabpage9 nap code
+tab10	ExSetting
+tabpage11 app data setting
+tab12	Auto Select RRS
+tabpage13 network setting
+checkbox23 smartlink
+checkbox24 ssh server
+checkbox18 check trung ip
+textbox11 offerid
+--------------------------------
+autoleadthread
+loop1
+loop2
++ create c__DisplayClass133_
++ if get enabled offer == null => break;
+loop3
+- get proxytype + VIP chung
+- text = anaURL(offerUrl)
+if(text contain "Home/urlRedirect?urlid="){
+}
+if(proxytype = "SSH"){
+}
+if(proxyType == "Vip72"){
+}
+if(proxytype == "SSHServer"){
+}
+if(proxytype != "Direct" && proxyType != "SSHServer"){
+//check trung ip
+}
+cmd close all
+cmd wipe
+cmd fake type
+cmd fake version
+randominfo();
+change name
+fakelocationbyIP
+changeLanguage
+changeRegion
+changetimezone
+changecarrier
+fakeGPS
+
+for offerList :
+loop 3:
+	+ if checkbox 4 => check number run => over => disable
+	+ if disable => break;
+	+ update GUI
+	+ set referer
+	+ openURL
+	+ cmd getFront
+	while(front == "" || front == "com.apple.mobilesafari"){
+		+ click safari + click itune;
+		+ if(front == offer.appId) => break;
+| 		if(front != ""){
+  		}
+  		cmd getFront
+	}
+	cmd getActiveURL
+	get bundleId
+	if(bundleid !=null && bundleId != offer.bundleID) => wipe safari => continue;
+	update GUI
+	sleepBefore + touch itune
+	if(checkbox8 => checkIp)
+endloop
+	open appp
+	if(use script => exe script)
+	close app
+	if backup => backup app
+		
+
+
+
+rrsthread

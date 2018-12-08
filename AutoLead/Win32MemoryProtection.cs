@@ -1,0 +1,32 @@
+﻿using System;
+
+namespace AutoLead
+{
+	// Token: 0x02000095 RID: 149
+	[Flags]
+	public enum Win32MemoryProtection
+	{
+		// Token: 0x04000440 RID: 1088
+		PAGE_EXECUTE = 16,
+		// Token: 0x04000441 RID: 1089
+		PAGE_EXECUTE_READ = 32,
+		// Token: 0x04000442 RID: 1090
+		PAGE_EXECUTE_READWRITE = 64,
+		// Token: 0x04000443 RID: 1091
+		PAGE_EXECUTE_WRITECOPY = 128,
+		// Token: 0x04000444 RID: 1092
+		PAGE_NOACCESS = 1,
+		// Token: 0x04000445 RID: 1093
+		PAGE_READONLY = 2,
+		// Token: 0x04000446 RID: 1094
+		PAGE_READWRITE = 4,
+		// Token: 0x04000447 RID: 1095
+		PAGE_WRITECOPY = 8,
+		// Token: 0x04000448 RID: 1096
+		PAGE_GUARD = 256,
+		// Token: 0x04000449 RID: 1097
+		PAGE_NOCACHE = 512,
+		// Token: 0x0400044A RID: 1098
+		PAGE_WRITECOMBINE = 1024
+	}
+}
